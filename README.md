@@ -1,7 +1,12 @@
 # Vehicle & Sentiment MLOps
 
 Production-ready MLOps system combining vehicle inventory management and sentiment analysis.
-Built from a real ING Hubs Turkey Codility assessment, extended into a full MLOps pipeline.
+
+[![CI/CD](https://github.com/mtbagatur/vehicle-sentiment-mlops/actions/workflows/pipeline.yml/badge.svg)](https://github.com/mtbagatur/vehicle-sentiment-mlops/actions)
+
+> Read the full article on Medium: [Building a Production-Ready MLOps System from Scratch](https://medium.com/@mtbagatur/building-a-production-ready-mlops-system-from-scratch-4d91f75be673)
+
+---
 
 ## Architecture
 
@@ -36,20 +41,17 @@ Built from a real ING Hubs Turkey Codility assessment, extended into a full MLOp
 ## Quick Start
 
 ```bash
-# Clone and run
 git clone https://github.com/mtbagatur/vehicle-sentiment-mlops
 cd vehicle-sentiment-mlops
 docker compose up --build
-
-# API docs
-open http://localhost:8000/docs
-
-# MLflow experiments
-open http://localhost:5000
-
-# Grafana dashboard (admin / mlops123)
-open http://localhost:3000
 ```
+
+| Service | URL |
+|---|---|
+| API docs | http://localhost:8000/docs |
+| MLflow | http://localhost:5000 |
+| Grafana | http://localhost:3000 (admin / mlops123) |
+| Prometheus | http://localhost:9090 |
 
 ## API Endpoints
 
@@ -66,14 +68,14 @@ curl -X POST http://localhost:8000/vehicles/c1/sell \
   -H "Content-Type: application/json" \
   -d '{"quantity":3}'
 
-# List all
+# List all vehicles
 curl http://localhost:8000/vehicles/
 ```
 
 ### Sentiment Analysis
 
 ```bash
-# Predict
+# Predict sentiment
 curl -X POST http://localhost:8000/sentiment/predict \
   -H "Content-Type: application/json" \
   -d '{"texts":["I love this product","Terrible experience"]}'
@@ -92,9 +94,13 @@ pytest tests/ -v
 ## CI/CD
 
 On every push to `main`:
-1. Run tests
-2. Build Docker image
+1. Run tests — pipeline stops if any test fails
+2. Build Docker image tagged with commit SHA
 3. Push to GitHub Container Registry
 4. Deploy to server via SSH
 
-Set these GitHub secrets: `SERVER_HOST`, `SERVER_USER`, `SSH_PRIVATE_KEY`
+Required GitHub secrets: `SERVER_HOST`, `SERVER_USER`, `SSH_PRIVATE_KEY`
+
+---
+
+*Built by [Taha Bagatur](https://www.linkedin.com/in/taha-bagatur) — MLOps & DevOps Engineer*
