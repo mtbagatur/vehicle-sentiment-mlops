@@ -37,7 +37,7 @@ Built from a real ING Hubs Turkey Codility assessment, extended into a full MLOp
 
 ```bash
 # Clone and run
-git clone https://github.com/your-username/vehicle-sentiment-mlops
+git clone https://github.com/mtbagatur/vehicle-sentiment-mlops
 cd vehicle-sentiment-mlops
 docker compose up --build
 
