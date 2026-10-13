@@ -99,8 +99,8 @@ On every push to `main`:
 3. Push to GitHub Container Registry
 4. Deploy to server via SSH
 
-Required GitHub secrets: `SERVER_HOST`, `SERVER_USER`, `SSH_PRIVATE_KEY`
+Deployment runs only when the repository variable `DEPLOY_ENABLED` is `true`; it then needs the secrets `SERVER_HOST`, `SERVER_USER` and `SSH_PRIVATE_KEY`. Without them the deploy job is skipped and CI stays green.
 
 ---
 
-*Built by [Taha Bagatur](https://www.linkedin.com/in/taha-bagatur) — MLOps & DevOps Engineer*
+*Built by [Taha Bagatur](https://www.linkedin.com/in/mtbagatur) — MLOps & DevOps Engineer*

@@ -17,7 +17,7 @@ services:
       - mlops-net
 
   mlflow:
-    image: ghcr.io/mlflow/mlflow:v2.8.0
+    image: ghcr.io/mlflow/mlflow:v2.17.2
     container_name: mlflow
     ports:
       - "5000:5000"
